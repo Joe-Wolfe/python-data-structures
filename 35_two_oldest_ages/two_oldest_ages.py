@@ -1,3 +1,6 @@
+import doctest
+
+
 def two_oldest_ages(ages):
     """Return two distinct oldest ages as tuple (second-oldest, oldest)..
 
@@ -10,14 +13,25 @@ def two_oldest_ages(ages):
     Even if more than one person has the same oldest age, this should return
     two *distinct* oldest ages:
 
-        >>> two_oldest_ages([1, 5, 5, 2])
+        >>> two_oldest_ages([5, 5, 2, 5])
         (2, 5)
     """
+    start = 1
+    while (ages[0] == ages[start]):
+        start += 1
+    second_oldest = min(ages[0], ages[start])
+    oldest = max(ages[0], ages[start])
 
-    # NOTE: don't worry about an optimized runtime here; it's fine if
-    # you have a runtime worse than O(n)
+    for index in range(start+1, len(ages)):
+        new_age = ages[index]
+        if (new_age == oldest):
+            continue
+        if (new_age > oldest):
+            second_oldest = oldest
+            oldest = new_age
+        elif (new_age > second_oldest):
+            second_oldest = new_age
+    return (second_oldest, oldest)
 
-    # NOTE: you can sort lists with lst.sort(), which works in place (mutates);
-    # you may find it helpful to research the `sorted(iter)` function, which
-    # can take *any* type of list-like-thing, and returns a new, sorted list
-    # from it.
+
+doctest.testmod()

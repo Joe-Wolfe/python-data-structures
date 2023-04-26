@@ -1,3 +1,4 @@
+
 def includes(collection, sought, start=None):
     """Is sought in collection, starting at index start?
 
@@ -30,3 +31,12 @@ def includes(collection, sought, start=None):
         >>> includes({"apple": "red", "berry": "blue"}, "blue")
         True
     """
+
+    if isinstance(collection, dict):
+        return sought in collection.values()
+    elif isinstance(collection, set):
+        return sought in collection
+    elif start is None:
+        return sought in collection
+    else:
+        return sought in collection[start:]

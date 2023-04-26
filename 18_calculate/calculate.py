@@ -1,3 +1,4 @@
+
 def calculate(operation, a, b, make_int=False, message='The result is'):
     """Perform operation on a + b, ()possibly truncating) & returning w/msg.
 
@@ -24,5 +25,17 @@ def calculate(operation, a, b, make_int=False, message='The result is'):
     If a valid operation isn't provided, return None.
 
         >>> calculate('foo', 2, 3)
-        
+
     """
+    operations = {
+        "add": lambda a, b: a + b,
+        "subtract": lambda a, b: a - b,
+        "multiply": lambda a, b: a * b,
+        "divide": lambda a, b: a / b
+    }
+    if operation not in operations:
+        return None
+    result = operations[operation](a, b)
+    if make_int:
+        result = int(result)
+    return (f"{message} {result}")

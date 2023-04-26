@@ -1,3 +1,6 @@
+import doctest
+
+
 def mode(nums):
     """Return most-common number in list.
 
@@ -11,3 +14,16 @@ def mode(nums):
         >>> mode([2, 2, 3, 3, 2])
         2
     """
+    counter = {}
+    max = -1
+    ans = ""
+    for num in nums:
+        counter[num] = counter.get(num, 0)+1
+    for (k, v) in counter.items():
+        if (v > max):
+            ans = k
+            max = v
+    return ans
+
+
+doctest.testmod()

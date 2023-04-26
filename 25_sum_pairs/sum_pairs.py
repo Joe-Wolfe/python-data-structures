@@ -1,3 +1,6 @@
+import doctest
+
+
 def sum_pairs(nums, goal):
     """Return tuple of first pair of nums that sum to goal.
 
@@ -21,3 +24,11 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+    for val1 in range(len(nums)):
+        for val2 in range(val1+1, len(nums)):
+            if (nums[val1]+nums[val2] == goal):
+                return (nums[val1], nums[val2])
+    return ()
+
+
+doctest.testmod()

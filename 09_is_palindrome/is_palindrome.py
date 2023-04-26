@@ -1,3 +1,4 @@
+
 def is_palindrome(phrase):
     """Is phrase a palindrome?
 
@@ -21,3 +22,5 @@ def is_palindrome(phrase):
         >>> is_palindrome('Noon')
         True
     """
+    checker = phrase.upper().replace(" ", "")
+    return checker == checker[::-1]
