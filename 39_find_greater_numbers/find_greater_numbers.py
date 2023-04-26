@@ -1,5 +1,3 @@
-import doctest
-
 
 def find_greater_numbers(nums):
     """Return # of times a number is followed by a greater number.
@@ -29,6 +27,3 @@ def find_greater_numbers(nums):
             if nums[j] > nums[i]:
                 count += 1
     return count
-
-
-doctest.testmod()
